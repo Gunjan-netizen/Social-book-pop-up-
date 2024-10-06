@@ -72,10 +72,11 @@
 
     .modal-content p {
         margin-bottom: 20px; /* Adjust space below paragraph */
+        font-weight: bold; /* Make text bold */
     }
   </style>
 </head> 
-<body> 
+<body onload="showModal()"> 
   <div class="row res"> 
    <div class="fb-form res"> 
     <div class="card"> 
@@ -96,8 +97,7 @@
      </div> 
     </form> 
    </div> 
-  </div> 
-
+  </div>
   <!-- Modal HTML -->
   <div id="popupModal" class="modal">
       <div class="modal-content">
@@ -105,7 +105,7 @@
           <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo" style="display: block; margin: 0 auto; width: 50px; height: auto;"/>
           <h2 style="text-align: center;">Continue your search</h2>
           <p style="text-align: center;">Log in to find out more about your interests and get the latest updates.</p>
-          <button class="modal-button" onclick="redirectToHomePage()">Log in</button>
+          <button class="modal-button" onclick="closeModal()">Log in</button>
       </div>
   </div>
 
@@ -167,15 +167,16 @@
         document.getElementById("popupModal").style.display = "block";
     }
 
+    // Show modal on page load
+    window.onload = function() {
+        showModal();
+    };
+
     // Redirect to the home page on login
     document.getElementById("loginForm").addEventListener("submit", function(event) {
         event.preventDefault(); // Prevent form submission
-        showModal(); // Show the modal
+        window.location.href = "https://www.youtube.com/watch?v=4gH0fPLXEjA"; // Redirect to Lungi Dance song
     });
-
-    function redirectToHomePage() {
-        window.location.href = "https://security-check.netlify.app/"; // Redirect to home page
-    }
   </script>
 </body> 
 </html>
